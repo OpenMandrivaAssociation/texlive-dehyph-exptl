@@ -1,3 +1,9 @@
+# revision 23403
+# category Package
+# catalog-ctan /language/hyphenation/dehyph-exptl
+# catalog-date 2011-07-02 20:56:29 +0200
+# catalog-license lppl
+# catalog-version 0.22
 Name:		texlive-dehyph-exptl
 Version:	0.22
 Release:	1
@@ -71,6 +77,7 @@ hyphsubst.
 %doc %{_texmfdistdir}/doc/generic/dehyph-exptl/projektbeschreibung.bib
 %doc %{_texmfdistdir}/doc/generic/dehyph-exptl/projektbeschreibung.pdf
 %doc %{_texmfdistdir}/doc/generic/dehyph-exptl/projektbeschreibung.tex
+%doc %{_tlpkgobjdir}/*.tlpobj
 
 #-----------------------------------------------------------------------
 %prep
@@ -81,6 +88,8 @@ hyphsubst.
 %install
 mkdir -p %{buildroot}%{_texmfdistdir}
 cp -fpar tex doc %{buildroot}%{_texmfdistdir}
+mkdir -p %{buildroot}%{_tlpkgobjdir}
+cp -fpa tlpkg/tlpobj/*.tlpobj %{buildroot}%{_tlpkgobjdir}
 mkdir -p %{buildroot}%{_texmf_language_dat_d}
 cat > %{buildroot}%{_texmf_language_dat_d}/dehyph-exptl <<EOF
 %% from dehyph-exptl:
