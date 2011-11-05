@@ -15,12 +15,12 @@ Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/dehyph-exptl.tar.
 Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/dehyph-exptl.doc.tar.xz
 BuildArch:	noarch
 BuildRequires:	texlive-tlpkg
-Requires(post):	texlive-tlpkg
-Requires:	texlive-hyphen-base
+Requires(pre):	texlive-tlpkg
+Requires(post):	texlive-kpathsea
+Requires(post):	texlive-hyphen-base
 Requires:	texlive-hyph-utf8
 Conflicts:	texlive-texmf <= 20110705-3
 Conflicts:	texlive-doc <= 20110705-3
-Requires(post):	texlive-hyphen-base
 
 %description
 The package provides experimental hyphenation patterns for the
@@ -35,10 +35,8 @@ hyphsubst.
     %_texmf_mktexlsr_pre
 
 %post
-    %_texmf_language_dat_post
-    %_texmf_language_def_post
-    %_texmf_language_lua_post
     %_texmf_mktexlsr_post
+    %_texmf_language_lua_post
 
 %preun
     if [ $1 -eq 0 ]; then
@@ -50,10 +48,8 @@ hyphsubst.
 
 %postun
     if [ $1 -eq 0 ]; then
-	%_texmf_language_dat_post
-	%_texmf_language_def_post
-	%_texmf_language_lua_post
 	%_texmf_mktexlsr_post
+	%_texmf_language_lua_post
     fi
 
 #-----------------------------------------------------------------------
