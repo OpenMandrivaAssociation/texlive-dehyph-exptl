@@ -19,8 +19,6 @@ Requires(pre):	texlive-tlpkg
 Requires(post):	texlive-kpathsea
 Requires(post):	texlive-hyphen-base
 Requires:	texlive-hyph-utf8
-Conflicts:	texlive-texmf <= 20110705-3
-Conflicts:	texlive-doc <= 20110705-3
 
 %description
 The package provides experimental hyphenation patterns for the
@@ -28,28 +26,12 @@ German language, covering both traditional and reformed
 orthography. The patterns can be used with packages Babel and
 hyphsubst.
 
-%pre
-    %_texmf_language_dat_pre
-    %_texmf_language_def_pre
-    %_texmf_language_lua_pre
-    %_texmf_mktexlsr_pre
-
 %post
-    %_texmf_mktexlsr_post
-    %_texmf_language_lua_post
-
-%preun
-    if [ $1 -eq 0 ]; then
-	%_texmf_language_dat_pre
-	%_texmf_language_def_pre
-	%_texmf_language_lua_pre
-	%_texmf_mktexlsr_pre
-    fi
+    %{_sbindir}/texlive.post
 
 %postun
     if [ $1 -eq 0 ]; then
-	%_texmf_mktexlsr_post
-	%_texmf_language_lua_post
+	%{_sbindir}/texlive.post
     fi
 
 #-----------------------------------------------------------------------
@@ -73,7 +55,6 @@ hyphsubst.
 %doc %{_texmfdistdir}/doc/generic/dehyph-exptl/projektbeschreibung.bib
 %doc %{_texmfdistdir}/doc/generic/dehyph-exptl/projektbeschreibung.pdf
 %doc %{_texmfdistdir}/doc/generic/dehyph-exptl/projektbeschreibung.tex
-%doc %{_tlpkgobjdir}/*.tlpobj
 
 #-----------------------------------------------------------------------
 %prep
@@ -84,8 +65,6 @@ hyphsubst.
 %install
 mkdir -p %{buildroot}%{_texmfdistdir}
 cp -fpar tex doc %{buildroot}%{_texmfdistdir}
-mkdir -p %{buildroot}%{_tlpkgobjdir}
-cp -fpa tlpkg/tlpobj/*.tlpobj %{buildroot}%{_tlpkgobjdir}
 mkdir -p %{buildroot}%{_texmf_language_dat_d}
 cat > %{buildroot}%{_texmf_language_dat_d}/dehyph-exptl <<EOF
 %% from dehyph-exptl:
