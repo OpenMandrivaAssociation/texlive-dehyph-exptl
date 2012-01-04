@@ -67,7 +67,7 @@ mkdir -p %{buildroot}%{_texmfdistdir}
 cp -fpar tex doc %{buildroot}%{_texmfdistdir}
 mkdir -p %{buildroot}%{_texmf_language_dat_d}
 cat > %{buildroot}%{_texmf_language_dat_d}/dehyph-exptl <<EOF
-%% from dehyph-exptl:
+\%\% from dehyph-exptl:
 german-x-2011-07-01 dehypht-x-2011-07-01.tex
 =german-x-latest
 ngerman-x-2011-07-01 dehyphn-x-2011-07-01.tex
@@ -75,7 +75,7 @@ ngerman-x-2011-07-01 dehyphn-x-2011-07-01.tex
 EOF
 mkdir -p %{buildroot}%{_texmf_language_def_d}
 cat > %{buildroot}%{_texmf_language_def_d}/dehyph-exptl <<EOF
-%% from dehyph-exptl:
+\%\% from dehyph-exptl:
 \addlanguage{german-x-2011-07-01}{dehypht-x-2011-07-01.tex}{}{2}{2}
 \addlanguage{german-x-latest}{dehypht-x-2011-07-01.tex}{}{2}{2}
 \addlanguage{ngerman-x-2011-07-01}{dehyphn-x-2011-07-01.tex}{}{2}{2}
