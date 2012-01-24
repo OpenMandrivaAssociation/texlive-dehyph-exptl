@@ -6,7 +6,7 @@
 # catalog-version 0.22
 Name:		texlive-dehyph-exptl
 Version:	0.22
-Release:	2
+Release:	3
 Summary:	Experimental hyphenation patterns for the German language
 Group:		Publishing
 URL:		http://www.ctan.org/tex-archive/language/hyphenation/dehyph-exptl
@@ -67,20 +67,22 @@ mkdir -p %{buildroot}%{_texmfdistdir}
 cp -fpar tex doc %{buildroot}%{_texmfdistdir}
 mkdir -p %{buildroot}%{_texmf_language_dat_d}
 cat > %{buildroot}%{_texmf_language_dat_d}/dehyph-exptl <<EOF
-\%\% from dehyph-exptl:
+\%% from dehyph-exptl:
 german-x-2011-07-01 dehypht-x-2011-07-01.tex
 =german-x-latest
 ngerman-x-2011-07-01 dehyphn-x-2011-07-01.tex
 =ngerman-x-latest
 EOF
+perl -pi -e 's|\\%%|%%|;' %{buildroot}%{_texmf_language_dat_d}/dehyph-exptl
 mkdir -p %{buildroot}%{_texmf_language_def_d}
 cat > %{buildroot}%{_texmf_language_def_d}/dehyph-exptl <<EOF
-\%\% from dehyph-exptl:
+\%% from dehyph-exptl:
 \addlanguage{german-x-2011-07-01}{dehypht-x-2011-07-01.tex}{}{2}{2}
 \addlanguage{german-x-latest}{dehypht-x-2011-07-01.tex}{}{2}{2}
 \addlanguage{ngerman-x-2011-07-01}{dehyphn-x-2011-07-01.tex}{}{2}{2}
 \addlanguage{ngerman-x-latest}{dehyphn-x-2011-07-01.tex}{}{2}{2}
 EOF
+perl -pi -e 's|\\%%|%%|;' %{buildroot}%{_texmf_language_def_d}/dehyph-exptl
 mkdir -p %{buildroot}%{_texmf_language_lua_d}
 cat > %{buildroot}%{_texmf_language_lua_d}/dehyph-exptl <<EOF
 -- from dehyph-exptl:
