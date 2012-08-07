@@ -1,12 +1,12 @@
-# revision 23403
+# revision 26867
 # category Package
 # catalog-ctan /language/hyphenation/dehyph-exptl
-# catalog-date 2011-07-02 20:56:29 +0200
+# catalog-date 2012-05-31 18:53:16 +0200
 # catalog-license lppl
-# catalog-version 0.22
+# catalog-version 0.23
 Name:		texlive-dehyph-exptl
-Version:	0.22
-Release:	3
+Version:	0.23
+Release:	1
 Summary:	Experimental hyphenation patterns for the German language
 Group:		Publishing
 URL:		http://www.ctan.org/tex-archive/language/hyphenation/dehyph-exptl
@@ -36,13 +36,12 @@ hyphsubst.
 
 #-----------------------------------------------------------------------
 %files
-%{_texmfdistdir}/tex/generic/dehyph-exptl/dehyph-exptl.tex
-%{_texmfdistdir}/tex/generic/dehyph-exptl/dehyphn-x-2011-07-01.pat
-%{_texmfdistdir}/tex/generic/dehyph-exptl/dehyphn-x-2011-07-01.tex
-%{_texmfdistdir}/tex/generic/dehyph-exptl/dehypht-x-2011-07-01.pat
-%{_texmfdistdir}/tex/generic/dehyph-exptl/dehypht-x-2011-07-01.tex
-%{_texmfdistdir}/tex/generic/dehyph-exptl/dehyphts-x-2011-07-01.pat
-%{_texmfdistdir}/tex/generic/dehyph-exptl/dehyphts-x-2011-07-01.tex
+%{_texmfdistdir}/tex/generic/dehyph-exptl/dehyphn-x-2012-05-30.pat
+%{_texmfdistdir}/tex/generic/dehyph-exptl/dehyphn-x-2012-05-30.tex
+%{_texmfdistdir}/tex/generic/dehyph-exptl/dehypht-x-2012-05-30.pat
+%{_texmfdistdir}/tex/generic/dehyph-exptl/dehypht-x-2012-05-30.tex
+%{_texmfdistdir}/tex/generic/dehyph-exptl/dehyphts-x-2012-05-30.pat
+%{_texmfdistdir}/tex/generic/dehyph-exptl/dehyphts-x-2012-05-30.tex
 %_texmf_language_dat_d/dehyph-exptl
 %_texmf_language_def_d/dehyph-exptl
 %_texmf_language_lua_d/dehyph-exptl
@@ -52,9 +51,7 @@ hyphsubst.
 %doc %{_texmfdistdir}/doc/generic/dehyph-exptl/README
 %doc %{_texmfdistdir}/doc/generic/dehyph-exptl/dehyph-exptl.bib
 %doc %{_texmfdistdir}/doc/generic/dehyph-exptl/dehyph-exptl.pdf
-%doc %{_texmfdistdir}/doc/generic/dehyph-exptl/projektbeschreibung.bib
-%doc %{_texmfdistdir}/doc/generic/dehyph-exptl/projektbeschreibung.pdf
-%doc %{_texmfdistdir}/doc/generic/dehyph-exptl/projektbeschreibung.tex
+%doc %{_texmfdistdir}/doc/generic/dehyph-exptl/dehyph-exptl.tex
 
 #-----------------------------------------------------------------------
 %prep
@@ -68,34 +65,34 @@ cp -fpar tex doc %{buildroot}%{_texmfdistdir}
 mkdir -p %{buildroot}%{_texmf_language_dat_d}
 cat > %{buildroot}%{_texmf_language_dat_d}/dehyph-exptl <<EOF
 \%% from dehyph-exptl:
-german-x-2011-07-01 dehypht-x-2011-07-01.tex
+german-x-2012-05-30 dehypht-x-2012-05-30.tex
 =german-x-latest
-ngerman-x-2011-07-01 dehyphn-x-2011-07-01.tex
+ngerman-x-2012-05-30 dehyphn-x-2012-05-30.tex
 =ngerman-x-latest
 EOF
 perl -pi -e 's|\\%%|%%|;' %{buildroot}%{_texmf_language_dat_d}/dehyph-exptl
 mkdir -p %{buildroot}%{_texmf_language_def_d}
 cat > %{buildroot}%{_texmf_language_def_d}/dehyph-exptl <<EOF
 \%% from dehyph-exptl:
-\addlanguage{german-x-2011-07-01}{dehypht-x-2011-07-01.tex}{}{2}{2}
-\addlanguage{german-x-latest}{dehypht-x-2011-07-01.tex}{}{2}{2}
-\addlanguage{ngerman-x-2011-07-01}{dehyphn-x-2011-07-01.tex}{}{2}{2}
-\addlanguage{ngerman-x-latest}{dehyphn-x-2011-07-01.tex}{}{2}{2}
+\addlanguage{german-x-2012-05-30}{dehypht-x-2012-05-30.tex}{}{2}{2}
+\addlanguage{german-x-latest}{dehypht-x-2012-05-30.tex}{}{2}{2}
+\addlanguage{ngerman-x-2012-05-30}{dehyphn-x-2012-05-30.tex}{}{2}{2}
+\addlanguage{ngerman-x-latest}{dehyphn-x-2012-05-30.tex}{}{2}{2}
 EOF
 perl -pi -e 's|\\%%|%%|;' %{buildroot}%{_texmf_language_def_d}/dehyph-exptl
 mkdir -p %{buildroot}%{_texmf_language_lua_d}
 cat > %{buildroot}%{_texmf_language_lua_d}/dehyph-exptl <<EOF
 -- from dehyph-exptl:
-	['german-x-2011-07-01'] = {
-		loader = 'dehypht-x-2011-07-01.tex',
+	['german-x-2012-05-30'] = {
+		loader = 'dehypht-x-2012-05-30.tex',
 		lefthyphenmin = 2,
 		righthyphenmin = 2,
 		synonyms = { 'german-x-latest' },
 		patterns = 'hyph-de-1901.pat.txt',
 		hyphenation = 'hyph-de-1901.hyp.txt',
 	},
-	['ngerman-x-2011-07-01'] = {
-		loader = 'dehyphn-x-2011-07-01.tex',
+	['ngerman-x-2012-05-30'] = {
+		loader = 'dehyphn-x-2012-05-30.tex',
 		lefthyphenmin = 2,
 		righthyphenmin = 2,
 		synonyms = { 'ngerman-x-latest' },
