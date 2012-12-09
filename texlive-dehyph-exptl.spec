@@ -100,3 +100,25 @@ cat > %{buildroot}%{_texmf_language_lua_d}/dehyph-exptl <<EOF
 		hyphenation = 'hyph-de-1996.hyp.txt',
 	},
 EOF
+
+
+%changelog
+* Tue Aug 07 2012 Paulo Andrade <pcpa@mandriva.com.br> 0.23-1
++ Revision: 812215
+- Update to latest release.
+
+* Tue Jan 24 2012 Paulo Andrade <pcpa@mandriva.com.br> 0.22-3
++ Revision: 767503
+- Add workaround to rpm bug that broke hyphenation files
+
+* Wed Jan 04 2012 Paulo Andrade <pcpa@mandriva.com.br> 0.22-2
++ Revision: 751090
+- Rebuild to reduce used resources
+
+* Sat Nov 05 2011 Paulo Andrade <pcpa@mandriva.com.br> 0.22-1
++ Revision: 718212
+- texlive-dehyph-exptl
+- texlive-dehyph-exptl
+- texlive-dehyph-exptl
+- texlive-dehyph-exptl
+
