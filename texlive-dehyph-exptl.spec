@@ -1,11 +1,11 @@
-# revision 26867
+# revision 30791
 # category Package
 # catalog-ctan /language/hyphenation/dehyph-exptl
-# catalog-date 2012-05-31 18:53:16 +0200
+# catalog-date 2013-05-29 00:44:55 +0200
 # catalog-license lppl
-# catalog-version 0.23
+# catalog-version 0.3
 Name:		texlive-dehyph-exptl
-Version:	0.23
+Version:	0.30
 Release:	1
 Summary:	Experimental hyphenation patterns for the German language
 Group:		Publishing
@@ -36,12 +36,12 @@ hyphsubst.
 
 #-----------------------------------------------------------------------
 %files
-%{_texmfdistdir}/tex/generic/dehyph-exptl/dehyphn-x-2012-05-30.pat
-%{_texmfdistdir}/tex/generic/dehyph-exptl/dehyphn-x-2012-05-30.tex
-%{_texmfdistdir}/tex/generic/dehyph-exptl/dehypht-x-2012-05-30.pat
-%{_texmfdistdir}/tex/generic/dehyph-exptl/dehypht-x-2012-05-30.tex
-%{_texmfdistdir}/tex/generic/dehyph-exptl/dehyphts-x-2012-05-30.pat
-%{_texmfdistdir}/tex/generic/dehyph-exptl/dehyphts-x-2012-05-30.tex
+%{_texmfdistdir}/tex/generic/dehyph-exptl/dehyphn-x-2013-05-26.pat
+%{_texmfdistdir}/tex/generic/dehyph-exptl/dehyphn-x-2013-05-26.tex
+%{_texmfdistdir}/tex/generic/dehyph-exptl/dehypht-x-2013-05-26.pat
+%{_texmfdistdir}/tex/generic/dehyph-exptl/dehypht-x-2013-05-26.tex
+%{_texmfdistdir}/tex/generic/dehyph-exptl/dehyphts-x-2013-05-26.pat
+%{_texmfdistdir}/tex/generic/dehyph-exptl/dehyphts-x-2013-05-26.tex
 %_texmf_language_dat_d/dehyph-exptl
 %_texmf_language_def_d/dehyph-exptl
 %_texmf_language_lua_d/dehyph-exptl
@@ -65,34 +65,34 @@ cp -fpar tex doc %{buildroot}%{_texmfdistdir}
 mkdir -p %{buildroot}%{_texmf_language_dat_d}
 cat > %{buildroot}%{_texmf_language_dat_d}/dehyph-exptl <<EOF
 \%% from dehyph-exptl:
-german-x-2012-05-30 dehypht-x-2012-05-30.tex
+german-x-2013-05-26 dehypht-x-2013-05-26.tex
 =german-x-latest
-ngerman-x-2012-05-30 dehyphn-x-2012-05-30.tex
+ngerman-x-2013-05-26 dehyphn-x-2013-05-26.tex
 =ngerman-x-latest
 EOF
 perl -pi -e 's|\\%%|%%|;' %{buildroot}%{_texmf_language_dat_d}/dehyph-exptl
 mkdir -p %{buildroot}%{_texmf_language_def_d}
 cat > %{buildroot}%{_texmf_language_def_d}/dehyph-exptl <<EOF
 \%% from dehyph-exptl:
-\addlanguage{german-x-2012-05-30}{dehypht-x-2012-05-30.tex}{}{2}{2}
-\addlanguage{german-x-latest}{dehypht-x-2012-05-30.tex}{}{2}{2}
-\addlanguage{ngerman-x-2012-05-30}{dehyphn-x-2012-05-30.tex}{}{2}{2}
-\addlanguage{ngerman-x-latest}{dehyphn-x-2012-05-30.tex}{}{2}{2}
+\addlanguage{german-x-2013-05-26}{dehypht-x-2013-05-26.tex}{}{2}{2}
+\addlanguage{german-x-latest}{dehypht-x-2013-05-26.tex}{}{2}{2}
+\addlanguage{ngerman-x-2013-05-26}{dehyphn-x-2013-05-26.tex}{}{2}{2}
+\addlanguage{ngerman-x-latest}{dehyphn-x-2013-05-26.tex}{}{2}{2}
 EOF
 perl -pi -e 's|\\%%|%%|;' %{buildroot}%{_texmf_language_def_d}/dehyph-exptl
 mkdir -p %{buildroot}%{_texmf_language_lua_d}
 cat > %{buildroot}%{_texmf_language_lua_d}/dehyph-exptl <<EOF
 -- from dehyph-exptl:
-	['german-x-2012-05-30'] = {
-		loader = 'dehypht-x-2012-05-30.tex',
+	['german-x-2013-05-26'] = {
+		loader = 'dehypht-x-2013-05-26.tex',
 		lefthyphenmin = 2,
 		righthyphenmin = 2,
 		synonyms = { 'german-x-latest' },
 		patterns = 'hyph-de-1901.pat.txt',
 		hyphenation = 'hyph-de-1901.hyp.txt',
 	},
-	['ngerman-x-2012-05-30'] = {
-		loader = 'dehyphn-x-2012-05-30.tex',
+	['ngerman-x-2013-05-26'] = {
+		loader = 'dehyphn-x-2013-05-26.tex',
 		lefthyphenmin = 2,
 		righthyphenmin = 2,
 		synonyms = { 'ngerman-x-latest' },
@@ -100,25 +100,3 @@ cat > %{buildroot}%{_texmf_language_lua_d}/dehyph-exptl <<EOF
 		hyphenation = 'hyph-de-1996.hyp.txt',
 	},
 EOF
-
-
-%changelog
-* Tue Aug 07 2012 Paulo Andrade <pcpa@mandriva.com.br> 0.23-1
-+ Revision: 812215
-- Update to latest release.
-
-* Tue Jan 24 2012 Paulo Andrade <pcpa@mandriva.com.br> 0.22-3
-+ Revision: 767503
-- Add workaround to rpm bug that broke hyphenation files
-
-* Wed Jan 04 2012 Paulo Andrade <pcpa@mandriva.com.br> 0.22-2
-+ Revision: 751090
-- Rebuild to reduce used resources
-
-* Sat Nov 05 2011 Paulo Andrade <pcpa@mandriva.com.br> 0.22-1
-+ Revision: 718212
-- texlive-dehyph-exptl
-- texlive-dehyph-exptl
-- texlive-dehyph-exptl
-- texlive-dehyph-exptl
-
