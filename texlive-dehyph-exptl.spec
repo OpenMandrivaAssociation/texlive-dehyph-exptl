@@ -1,12 +1,6 @@
-# revision 30791
-# category Package
-# catalog-ctan /language/hyphenation/dehyph-exptl
-# catalog-date 2013-05-29 00:44:55 +0200
-# catalog-license lppl
-# catalog-version 0.3
 Name:		texlive-dehyph-exptl
-Version:	0.30
-Release:	9
+Version:	0.41
+Release:	1
 Summary:	Experimental hyphenation patterns for the German language
 Group:		Publishing
 URL:		http://www.ctan.org/tex-archive/language/hyphenation/dehyph-exptl
@@ -36,22 +30,11 @@ hyphsubst.
 
 #-----------------------------------------------------------------------
 %files
-%{_texmfdistdir}/tex/generic/dehyph-exptl/dehyphn-x-2013-05-26.pat
-%{_texmfdistdir}/tex/generic/dehyph-exptl/dehyphn-x-2013-05-26.tex
-%{_texmfdistdir}/tex/generic/dehyph-exptl/dehypht-x-2013-05-26.pat
-%{_texmfdistdir}/tex/generic/dehyph-exptl/dehypht-x-2013-05-26.tex
-%{_texmfdistdir}/tex/generic/dehyph-exptl/dehyphts-x-2013-05-26.pat
-%{_texmfdistdir}/tex/generic/dehyph-exptl/dehyphts-x-2013-05-26.tex
+%{_texmfdistdir}/tex/generic/dehyph-exptl
 %_texmf_language_dat_d/dehyph-exptl
 %_texmf_language_def_d/dehyph-exptl
 %_texmf_language_lua_d/dehyph-exptl
-%doc %{_texmfdistdir}/doc/generic/dehyph-exptl/CHANGES
-%doc %{_texmfdistdir}/doc/generic/dehyph-exptl/INSTALL
-%doc %{_texmfdistdir}/doc/generic/dehyph-exptl/LICENSE
-%doc %{_texmfdistdir}/doc/generic/dehyph-exptl/README
-%doc %{_texmfdistdir}/doc/generic/dehyph-exptl/dehyph-exptl.bib
-%doc %{_texmfdistdir}/doc/generic/dehyph-exptl/dehyph-exptl.pdf
-%doc %{_texmfdistdir}/doc/generic/dehyph-exptl/dehyph-exptl.tex
+%doc %{_texmfdistdir}/doc/generic/dehyph-exptl
 
 #-----------------------------------------------------------------------
 %prep
