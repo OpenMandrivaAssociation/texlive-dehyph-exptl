@@ -1,6 +1,6 @@
 Name:		texlive-dehyph-exptl
 Version:	0.5
-Release:	1
+Release:	2
 Summary:	Experimental hyphenation patterns for the German language
 Group:		Publishing
 URL:		http://www.ctan.org/tex-archive/language/hyphenation/dehyph-exptl
@@ -45,37 +45,53 @@ hyphsubst.
 %install
 mkdir -p %{buildroot}%{_texmfdistdir}
 cp -fpar tex doc %{buildroot}%{_texmfdistdir}
+
+cd tex/generic/dehyph-exptl
+DEHYPHT="`ls dehypht-x-*.tex |head -n1`"
+TVERSION="`echo $DEHYPHT |sed -e 's,^dehypht-x-,,;s,\.tex,,'`"
+DEHYPHN="`ls dehyphn-x-*.tex |head -n1`"
+NVERSION="`echo $DEHYPHN |sed -e 's,^dehyphn-x-,,;s,\.tex,,'`"
+cd -
+if ! echo $TVERSION |grep -qE '^[0-9][0-9][0-9][0-9]-[01][0-9]-[0-3][0-9]$'; then
+	echo "Version detection failed, please fix the spec"
+	exit 1
+fi
+if ! echo $NVERSION |grep -qE '^[0-9][0-9][0-9][0-9]-[01][0-9]-[0-3][0-9]$'; then
+	echo "Version detection failed, please fix the spec"
+	exit 1
+fi
+
 mkdir -p %{buildroot}%{_texmf_language_dat_d}
 cat > %{buildroot}%{_texmf_language_dat_d}/dehyph-exptl <<EOF
 \%% from dehyph-exptl:
-german-x-2013-05-26 dehypht-x-2013-05-26.tex
+german-x-$TVERSION $DEHYPHT
 =german-x-latest
-ngerman-x-2013-05-26 dehyphn-x-2013-05-26.tex
+ngerman-x-$NVERSION $DEHYPHN
 =ngerman-x-latest
 EOF
 perl -pi -e 's|\\%%|%%|;' %{buildroot}%{_texmf_language_dat_d}/dehyph-exptl
 mkdir -p %{buildroot}%{_texmf_language_def_d}
 cat > %{buildroot}%{_texmf_language_def_d}/dehyph-exptl <<EOF
 \%% from dehyph-exptl:
-\addlanguage{german-x-2013-05-26}{dehypht-x-2013-05-26.tex}{}{2}{2}
-\addlanguage{german-x-latest}{dehypht-x-2013-05-26.tex}{}{2}{2}
-\addlanguage{ngerman-x-2013-05-26}{dehyphn-x-2013-05-26.tex}{}{2}{2}
-\addlanguage{ngerman-x-latest}{dehyphn-x-2013-05-26.tex}{}{2}{2}
+\addlanguage{german-x-$TVERSION}{$DEHYPHT}{}{2}{2}
+\addlanguage{german-x-latest}{$DEHYPHT}{}{2}{2}
+\addlanguage{ngerman-x-$NVERSION}{$DEHYPHN}{}{2}{2}
+\addlanguage{ngerman-x-latest}{$DEHYPHN}{}{2}{2}
 EOF
 perl -pi -e 's|\\%%|%%|;' %{buildroot}%{_texmf_language_def_d}/dehyph-exptl
 mkdir -p %{buildroot}%{_texmf_language_lua_d}
 cat > %{buildroot}%{_texmf_language_lua_d}/dehyph-exptl <<EOF
 -- from dehyph-exptl:
-	['german-x-2013-05-26'] = {
-		loader = 'dehypht-x-2013-05-26.tex',
+	['german-x-$TVERSION'] = {
+		loader = '$DEHYPHT',
 		lefthyphenmin = 2,
 		righthyphenmin = 2,
 		synonyms = { 'german-x-latest' },
 		patterns = 'hyph-de-1901.pat.txt',
 		hyphenation = 'hyph-de-1901.hyp.txt',
 	},
-	['ngerman-x-2013-05-26'] = {
-		loader = 'dehyphn-x-2013-05-26.tex',
+	['ngerman-x-$NVERSION'] = {
+		loader = '$DEHYPHN',
 		lefthyphenmin = 2,
 		righthyphenmin = 2,
 		synonyms = { 'ngerman-x-latest' },
