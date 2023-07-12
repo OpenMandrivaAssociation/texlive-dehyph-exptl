@@ -1,6 +1,6 @@
 Name:		texlive-dehyph-exptl
-Version:	62734
-Release:	2
+Version:	66390
+Release:	1
 Summary:	Experimental hyphenation patterns for the German language
 Group:		Publishing
 URL:		http://www.ctan.org/tex-archive/language/hyphenation/dehyph-exptl
