@@ -3,7 +3,7 @@ Version:	70233
 Release:	1
 Summary:	Experimental hyphenation patterns for the German language
 Group:		Publishing
-URL:		http://www.ctan.org/tex-archive/language/hyphenation/dehyph-exptl
+URL:		https://www.ctan.org/tex-archive/language/hyphenation/dehyph-exptl
 License:	LPPL
 Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/dehyph-exptl.r%{version}.tar.xz
 Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/dehyph-exptl.doc.r%{version}.tar.xz
