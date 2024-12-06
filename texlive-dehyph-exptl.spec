@@ -1,5 +1,5 @@
 Name:		texlive-dehyph-exptl
-Version:	70233
+Version:	72949
 Release:	1
 Summary:	Experimental hyphenation patterns for the German language
 Group:		Publishing
