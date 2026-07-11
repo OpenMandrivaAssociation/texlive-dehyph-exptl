@@ -13,8 +13,6 @@ Source0:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/dehyph-exptl.r%{
 Source1:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/dehyph-exptl.doc.r%{tl_revision}.tar.xz
 BuildArch:	noarch
 BuildSystem:	texlive
-BuildRequires:	texlive-tlpkg
-%texlive_base_requires
 Requires:	texlive(hyph-utf8)
 Requires:	texlive(hyphen-base)
 Provides:	texlive(%{tl_name}) = %{tl_revision}
