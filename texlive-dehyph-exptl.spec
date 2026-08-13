@@ -1,9 +1,10 @@
 %global tl_name dehyph-exptl
 %global tl_revision 79618
+%global tl_version 1.0
 
 Name:		texlive-%{tl_name}
 Epoch:		1
-Version:	1.0
+Version:	%{tl_version}
 Release:	%{tl_revision}.1
 Summary:	Experimental hyphenation patterns for the German language
 Group:		Publishing
@@ -15,7 +16,8 @@ BuildArch:	noarch
 BuildSystem:	texlive
 Requires:	texlive(hyph-utf8)
 Requires:	texlive(hyphen-base)
-Provides:	texlive(%{tl_name}) = %{tl_revision}
+Requires:	texlive-tlpkg
+Provides:	texlive(%{tl_name}) = %{version}
 
 %description
 The package provides experimental hyphenation patterns for the German
@@ -27,3 +29,39 @@ Schweiz gebrauchliche Standarddeutsch in der traditionellen und
 reformierten Rechtschreibung ab und konnen mit den Paketen Babel und
 hyphsubst aus dem Oberdiek-Bundel verwendet werden.
 
+
+%install -a
+mkdir -p %{buildroot}%{_texmf_language_dat_d}
+cat > %{buildroot}%{_texmf_language_dat_d}/%{tl_name} <<'TL_HYPHEN_EOF'
+% from dehyph-exptl:
+german-x-2024-02-28 dehypht-x-2024-02-28.tex
+=german-x-latest
+ngerman-x-2024-02-28 dehyphn-x-2024-02-28.tex
+=ngerman-x-latest
+TL_HYPHEN_EOF
+mkdir -p %{buildroot}%{_texmf_language_def_d}
+cat > %{buildroot}%{_texmf_language_def_d}/%{tl_name} <<'TL_HYPHEN_EOF'
+% from dehyph-exptl:
+\addlanguage{german-x-2024-02-28}{dehypht-x-2024-02-28.tex}{}{2}{2}
+\addlanguage{german-x-latest}{dehypht-x-2024-02-28.tex}{}{2}{2}
+\addlanguage{ngerman-x-2024-02-28}{dehyphn-x-2024-02-28.tex}{}{2}{2}
+\addlanguage{ngerman-x-latest}{dehyphn-x-2024-02-28.tex}{}{2}{2}
+TL_HYPHEN_EOF
+mkdir -p %{buildroot}%{_texmf_language_lua_d}
+cat > %{buildroot}%{_texmf_language_lua_d}/%{tl_name} <<'TL_HYPHEN_EOF'
+-- from dehyph-exptl:
+['german-x-2024-02-28'] = {
+	loader = 'dehypht-x-2024-02-28.tex',
+	lefthyphenmin = 2,
+	righthyphenmin = 2,
+	synonyms = { 'german-x-latest' },
+	patterns = 'hyph-de-1901.pat.txt',
+},
+['ngerman-x-2024-02-28'] = {
+	loader = 'dehyphn-x-2024-02-28.tex',
+	lefthyphenmin = 2,
+	righthyphenmin = 2,
+	synonyms = { 'ngerman-x-latest' },
+	patterns = 'hyph-de-1996.pat.txt',
+},
+TL_HYPHEN_EOF
